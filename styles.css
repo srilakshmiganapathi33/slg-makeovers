@@ -93,123 +93,80 @@ body {
     color: var(--color-gold-button);
 }
 
-/* --- 4. Hero Section (Adjusted for mobile) --- */
 .hero-section {
     position: relative;
-    height: 100vh; /* Use full viewport height on mobile */
-    background-image: url('placeholder-hero.jpg'); 
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center center;
+    height: 100vh;
+    background: url('slg.jpg') center/cover no-repeat;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
 }
 
 .hero-overlay {
-    /* Changed to column layout for mobile */
-    flex-direction: column; 
-    justify-content: flex-end; /* Push content to the bottom */
+    background-color: rgba(0, 0, 0, 0.55);
+    width: 100%;
+    height: 100%;
+    padding: 40px 20px;
+    display: flex;
+    flex-direction: column;
     align-items: center;
-    padding: 10% 5%;
+    justify-content: center;
     text-align: center;
 }
 
 .logo-container {
-    /* Hide the large logo on top of the hero image for better mobile space efficiency */
-    display: none; 
-}
-
-.gb-meaning-text {
-    color: var(--color-gold-button); 
-    font-family: var(--font-serif); 
-    font-weight: 700;
-    font-size: 2.2em; 
-    margin-top: 50%; 
-    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
-    padding: 10px 0;
-    text-align: center;
-    line-height: 1.1;
-    width: 100%;
-    max-width: 400px;
-}
-
-
-.hero-text {
-    color: white;
-    max-width: 100%;
-    text-align: center; 
-    padding: 0; 
-    margin-bottom: 100px;
-    flex: 1; 
+    font-size: 2.2em;
+    font-weight: bold;
+    font-family: 'Prata', serif;
+    color: #fff;
+    margin-bottom: 20px;
 }
 
 .hero-text h1 {
-    font-family: var(--font-serif);
-    font-size: 3em; /* Smaller size for mobile */
-    margin-bottom: 15px; 
-    line-height: 1.2;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    font-size: 2.8em;
+    font-family: 'Playfair Display', serif;
+    margin-bottom: 15px;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.4);
 }
 
 .hero-text p {
-    font-size: 1.1em;
-    margin-bottom: 30px;
+    font-size: 1.2em;
+    font-family: 'Roboto', sans-serif;
+    margin-bottom: 25px;
+    color: #f1f1f1;
 }
 
 .hero-cta-group {
     display: flex;
-    flex-direction: column; /* Stack CTAs vertically on mobile */
     gap: 15px;
-    justify-content: center; 
-    align-items: center;
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
-
-/* --- 5. CTA Button Styling --- */
 .cta-button {
-    display: inline-block;
-    background-color: var(--color-gold-button);
-    color: var(--color-dark-green);
+    padding: 12px 24px;
+    border-radius: 4px;
+    background-color: var(--color-gold);
+    color: #fff;
     text-decoration: none;
-    font-weight: 700;
-    padding: 15px 35px;
-    border-radius: 50px; 
-    transition: background-color 0.3s, color 0.3s;
-    border: 2px solid transparent;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    width: 100%; /* Default width to 100% for easier mobile adaptation */
-    max-width: 300px; /* Limit CTA width */
-    padding: 12px 25px;
-    font-size: 0.9em;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
 }
 
 .cta-button:hover {
-    background-color: var(--color-dark-green);
-    color: white;
-    border-color: var(--color-gold-button);
-}
-
-.gold-cta {
-    background-color: var(--color-gold-text);
-    color: white;
-    border: 2px solid var(--color-gold-text);
-}
-
-.gold-cta:hover {
-    background-color: white;
-    color: var(--color-dark-green);
-    border-color: white;
+    background-color: #d4a017;
 }
 
 .gold-cta-border {
-    background-color: transparent;
-    color: var(--color-gold-button);
-    border: 2px solid var(--color-gold-button);
+    border: 2px solid var(--color-gold);
+    background: transparent;
+    color: var(--color-gold);
 }
 
 .gold-cta-border:hover {
-    background-color: var(--color-gold-button);
-    color: var(--color-dark-green);
-    border-color: var(--color-gold-button);
+    background: var(--color-gold);
+    color: #fff;
 }
 
 .gold-cta-border-dark {

@@ -65,7 +65,7 @@ body {
     font-size: 1.3em;
 }
 
-/* --- 3. Navigation --- */
+/* --- 3. Navigation (Adjusted for mobile) --- */
 .top-nav-hero {
     position: absolute;
     top: 20px;
@@ -93,10 +93,10 @@ body {
     color: var(--color-gold-button);
 }
 
-/* --- 4. Hero Section --- */
+/* --- 4. Hero Section (Adjusted for mobile) --- */
 .hero-section {
     position: relative;
-    height: 90vh;
+    height: 100vh; /* Use full viewport height on mobile */
     background-image: url('placeholder-hero.jpg'); 
     background-size: cover;
     background-repeat: no-repeat;
@@ -104,29 +104,17 @@ body {
 }
 
 .hero-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: rgba(0, 0, 0, 0.3); 
-    display: flex;
-    justify-content: space-around; 
+    /* Changed to column layout for mobile */
+    flex-direction: column; 
+    justify-content: flex-end; /* Push content to the bottom */
     align-items: center;
-    padding: 0 5%;
+    padding: 10% 5%;
+    text-align: center;
 }
 
 .logo-container {
-    flex: 1; 
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center; 
-    background-image: url('gb_logo.png'); 
-    background-repeat: no-repeat;
-    background-position: center 30%; 
-    background-size: 90%; 
+    /* Hide the large logo on top of the hero image for better mobile space efficiency */
+    display: none; 
 }
 
 .gb-meaning-text {
@@ -143,31 +131,35 @@ body {
     max-width: 400px;
 }
 
+
 .hero-text {
     color: white;
-    max-width: 500px;
-    text-align: left; 
+    max-width: 100%;
+    text-align: center; 
+    padding: 0; 
+    margin-bottom: 100px;
     flex: 1; 
-    padding-left: 5%; 
 }
 
 .hero-text h1 {
     font-family: var(--font-serif);
-    font-size: 4.5em; 
+    font-size: 3em; /* Smaller size for mobile */
     margin-bottom: 15px; 
-    line-height: 1.1;
+    line-height: 1.2;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 .hero-text p {
-    font-size: 1.3em;
-    margin-bottom: 40px;
+    font-size: 1.1em;
+    margin-bottom: 30px;
 }
 
 .hero-cta-group {
     display: flex;
-    gap: 20px;
-    justify-content: flex-start; 
+    flex-direction: column; /* Stack CTAs vertically on mobile */
+    gap: 15px;
+    justify-content: center; 
+    align-items: center;
 }
 
 
@@ -184,6 +176,10 @@ body {
     border: 2px solid transparent;
     text-transform: uppercase;
     letter-spacing: 1px;
+    width: 100%; /* Default width to 100% for easier mobile adaptation */
+    max-width: 300px; /* Limit CTA width */
+    padding: 12px 25px;
+    font-size: 0.9em;
 }
 
 .cta-button:hover {
@@ -229,7 +225,7 @@ body {
 }
 
 /* New Form CTA for Lead Magnet */
-.cta-button-form {
+.gold-cta-form {
     display: block;
     width: 100%;
     background-color: var(--color-gold-text);
@@ -243,13 +239,12 @@ body {
     font-family: var(--font-sans); 
     font-size: 1.1em;
 }
-.cta-button-form:hover {
-    background-color: var(--color-dark-green);
+.gold-cta-form:hover {
+    background-color: #79550e; /* Slightly darker gold */
     color: white;
 }
 
-
-/* --- 6. Services Card Layout & Maintenance Cards --- */
+/* --- 6. Services Card Layout & Maintenance Cards (Adjusted for mobile) --- */
 .service-cards {
     display: flex;
     flex-wrap: wrap; 
@@ -257,6 +252,8 @@ body {
     gap: 30px;
     max-width: 1200px; 
     margin: 0 auto 40px;
+    flex-direction: column; /* Mobile stack */
+    gap: 20px;
 }
 
 .card {
@@ -267,6 +264,8 @@ body {
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
     transition: transform 0.3s;
     min-width: 200px; 
+    flex: 1 1 100%; /* Full width on mobile */
+    max-width: 100%;
 }
 
 .card:hover {
@@ -291,6 +290,7 @@ body {
     background-color: #2e5c32; 
     color: white;
     border: none;
+    transform: none !important; /* Remove scaling effect on mobile */
 }
 
 .maintenance-cards .card h3 {
@@ -309,13 +309,15 @@ body {
 }
 
 
-/* --- 7. Why Choose Us? (Value Proposition) --- */
+/* --- 7. Why Choose Us? (Value Proposition) (Adjusted for mobile) --- */
 .value-propositions {
     display: grid;
     grid-template-columns: repeat(4, 1fr); 
     gap: 20px; 
     max-width: 1200px; 
     margin: 40px auto 0;
+    grid-template-columns: 1fr; /* Single column on mobile */
+    gap: 30px;
 }
 
 .value-item {
@@ -335,11 +337,14 @@ body {
 }
 
 
-/* --- 8. Gallery & Filter STYLES --- */
+/* --- 8. Gallery & Filter STYLES (Adjusted for mobile) --- */
 .filter-buttons {
     margin-bottom: 40px;
-    /* Allow buttons to wrap on smaller screens */
     white-space: normal; 
+    display: flex;
+    flex-wrap: wrap; 
+    justify-content: center;
+    gap: 5px;
 }
 
 .filter-btn {
@@ -347,14 +352,16 @@ body {
     color: var(--color-dark-green);
     border: 2px solid var(--color-gold-button);
     padding: 10px 20px;
-    margin: 5px; /* Increased margin for touch targets */
+    margin: 5px; 
     cursor: pointer;
     font-size: 1em;
     font-weight: 700;
     border-radius: 30px;
     transition: background-color 0.3s, color 0.3s;
     text-transform: uppercase;
-    display: inline-block; /* Ensure they wrap properly */
+    display: inline-block; 
+    padding: 8px 15px;
+    font-size: 0.85em;
 }
 
 .filter-btn.active {
@@ -371,6 +378,9 @@ body {
     justify-content: center;
     gap: 30px;
     padding: 0 10px;
+    flex-direction: column; /* Stack gallery items vertically */
+    gap: 20px;
+    padding: 0;
 }
 
 .gallery-item {
@@ -380,19 +390,21 @@ body {
     position: relative; 
     overflow: hidden;
     cursor: pointer; 
-    /* Improved transition for filtering */
     transition: opacity 0.4s ease-in-out, transform 0.4s ease-in-out, height 0.4s ease-in-out, margin 0.4s ease-in-out, flex 0.4s ease-in-out; 
     max-height: 450px; 
+    flex: 1 1 100%; /* Full width on mobile */
+    max-width: 100%;
+    margin: 0 auto;
 }
 
 .gallery-item.hidden {
     opacity: 0;
     transform: scale(0.9);
-    height: 0; /* Collapse element height */
+    height: 0; 
     margin: 0;
     padding: 0;
     pointer-events: none;
-    display: none; /* Crucial for flow control after transition */
+    display: none; 
 }
 
 .gallery-item img {
@@ -403,6 +415,8 @@ body {
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     margin-bottom: 15px;
     transition: transform 0.3s;
+    height: auto; /* Allow image height to scale */
+    max-height: 300px; 
 }
 
 .gallery-item:hover img {
@@ -410,7 +424,7 @@ body {
 }
 
 
-/* --- 9. Interactive Before & After Showcase (RE-ADDED & FIXED) --- */
+/* --- 9. Interactive Before & After Showcase --- */
 .before-after-container {
     max-width: 800px;
     margin: 0 auto;
@@ -419,6 +433,7 @@ body {
     box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
     overflow: hidden;
     padding: 20px;
+    padding: 10px;
 }
 
 .image-comparison-widget {
@@ -426,6 +441,7 @@ body {
     width: 100%;
     padding-top: 60%; /* Aspect ratio (e.g., 800px wide / 480px high = 60%) */
     cursor: col-resize;
+    padding-top: 75%; /* Slightly taller aspect ratio for mobile view */
 }
 
 .comparison-image {
@@ -448,7 +464,7 @@ body {
 
 .image-overlay .comparison-image {
     width: auto;
-    min-width: 100%; /* Ensures the image within the overlay covers the full width if needed */
+    min-width: 100%; 
 }
 
 .slider-divider {
@@ -475,6 +491,8 @@ body {
     align-items: center;
     justify-content: center;
     border: 3px solid var(--color-gold-button);
+    width: 40px;
+    height: 40px;
 }
 
 .label {
@@ -496,13 +514,15 @@ body {
 }
 
 
-/* --- 10. Process Flow (FIXED) --- */
+/* --- 10. Process Flow (Adjusted for mobile) --- */
 .process-flow {
     display: flex;
     justify-content: space-around;
     max-width: 1200px;
     margin: 40px auto;
     gap: 20px;
+    flex-direction: column; /* Stack steps vertically */
+    gap: 30px;
 }
 
 .process-step {
@@ -511,6 +531,7 @@ body {
     padding: 20px;
     text-align: center;
     position: relative;
+    max-width: 100%;
 }
 
 .process-step h4 {
@@ -521,7 +542,7 @@ body {
 }
 
 .process-step p {
-    color: rgba(255, 255, 255, 0.8); /* Fixed color visibility for text */
+    color: rgba(255, 255, 255, 0.8); 
     font-size: 1em;
     line-height: 1.4;
     opacity: 1; 
@@ -533,21 +554,21 @@ body {
     background: #2e5c32;
     border-radius: 50%;
     border: 3px solid var(--color-gold-button);
-    color: var(--color-gold-button); /* Ensure icon color is gold */
+    color: var(--color-gold-button); 
 }
 
+/* Remove the connector line for mobile */
 .process-flow .process-step:not(:last-child)::after {
-    content: '';
-    position: absolute;
-    top: 40px; 
-    right: -20px; 
-    width: 40px;
-    height: 2px;
-    background-color: var(--color-gold-button);
+    display: none;
+}
+/* Add a clear visual separator instead of the line */
+.process-flow .process-step:not(:last-child) {
+    border-bottom: 1px dashed rgba(255, 255, 255, 0.3);
+    padding-bottom: 30px;
 }
 
 
-/* --- 11. Testimonials --- */
+/* --- 11. Testimonials (Adjusted for mobile) --- */
 .testimonials-container {
     display: flex;
     justify-content: center;
@@ -555,6 +576,8 @@ body {
     max-width: 1200px; 
     margin: 40px auto;
     flex-wrap: wrap; 
+    flex-direction: column;
+    gap: 20px;
 }
 
 .testimonial-card {
@@ -566,6 +589,7 @@ body {
     border-radius: 5px;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
     text-align: left;
+    max-width: 100%;
 }
 
 .quote {
@@ -579,7 +603,7 @@ body {
     color: var(--color-dark-green);
 }
 
-/* --- 11B. Lead Form Styles (NEW) --- */
+/* --- 11B. Lead Form Styles (NEW) (Adjusted for mobile) --- */
 .lead-form-container {
     max-width: 600px;
     margin: 40px auto 0;
@@ -590,6 +614,8 @@ body {
     background-color: #2e5c32;
     padding: 30px;
     border-radius: 10px;
+    flex-direction: column;
+    gap: 20px;
 }
 
 .pdf-icon-area {
@@ -600,6 +626,7 @@ body {
 .lead-form {
     flex-grow: 1;
     text-align: left;
+    width: 100%;
 }
 
 .lead-form input {
@@ -616,120 +643,127 @@ body {
     font-size: 0.85em;
     margin-top: 10px;
     text-align: center;
-    opacity: 0.7;
+    color: rgba(255, 255, 255, 0.7);
 }
 
-/* --- 12. Call to Action Banner --- */
+
+/* --- 12. CTA Banner Section (Adjusted for mobile) --- */
 .cta-banner-section {
     background-color: var(--color-gold-text);
-    padding: 50px 20px;
     text-align: center;
+}
+
+.cta-banner-content {
+    padding: 60px 20px;
+    padding: 40px 20px;
 }
 
 .cta-banner-title {
     font-family: var(--font-serif);
-    font-size: 2.5em;
+    font-size: 3em;
     color: white;
-    margin-bottom: 10px;
+    margin-bottom: 15px;
+    font-size: 2em;
 }
 
 .cta-banner-subtitle {
     font-size: 1.2em;
     color: rgba(255, 255, 255, 0.9);
     margin-bottom: 30px;
-}
-
-.cta-banner-section .gold-cta {
-    background-color: white;
-    color: var(--color-dark-green);
-    border-color: white;
-}
-.cta-banner-section .gold-cta:hover {
-    background-color: var(--color-dark-green);
-    color: white;
-    border-color: var(--color-dark-green);
+    font-size: 1em;
 }
 
 
-/* --- 13. Footer --- */
+/* --- 13. Footer (Adjusted for mobile) --- */
 .contact-bar {
     background-color: var(--color-dark-green);
     color: white;
-    padding: 40px 20px;
+    padding: 50px 20px;
     text-align: center;
-    border-top: 5px solid var(--color-gold-text);
+    padding: 30px 20px;
 }
 
 .contact-section {
-    max-width: 800px;
+    max-width: 1200px;
     margin: 0 auto;
 }
 
 .contact-section p {
     margin-bottom: 15px;
     font-size: 1.1em;
+    margin-bottom: 15px;
+    font-size: 1em;
 }
 
-.social-links {
-    margin: 20px 0;
-}
-
-.social-links a {
+.contact-section a {
     color: white;
-    margin: 0 15px;
+    text-decoration: none;
     transition: color 0.3s;
 }
 
-.social-links a:hover {
+.contact-section a:hover {
     color: var(--color-gold-button);
+}
+
+.social-links {
+    margin-top: 30px;
+    margin-bottom: 30px;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.social-links a {
+    color: var(--color-gold-button);
+    font-size: 2em;
+    margin: 0 15px;
 }
 
 .copyright {
     font-size: 0.9em;
-    margin-top: 20px;
     color: rgba(255, 255, 255, 0.6);
+    margin-top: 20px;
 }
 
-/* --- 14. Lightbox Modal --- */
+/* --- 14. Modal (Lightbox) Styles --- */
 .modal {
-    display: none;
-    position: fixed;
-    z-index: 100; 
-    padding-top: 50px;
+    display: none; 
+    position: fixed; 
+    z-index: 1000; 
+    padding-top: 60px; 
     left: 0;
     top: 0;
-    width: 100%;
-    height: 100%;
-    overflow: auto;
-    background-color: rgba(0, 0, 0, 0.9);
+    width: 100%; 
+    height: 100%; 
+    overflow: auto; 
+    background-color: rgba(0,0,0,0.9); 
 }
 
 .modal-content-container {
     margin: auto;
     display: block;
-    width: 80%;
+    width: 90%;
     max-width: 900px;
-    position: relative;
-    padding: 20px 0;
 }
 
 .modal-image {
     width: 100%;
-    max-height: 80vh;
+    height: auto;
     display: block;
-    margin: 0 auto;
-    object-fit: contain;
+    border-radius: 8px;
 }
 
-.caption {
-    margin: 15px auto;
+#caption {
+    margin: auto;
     display: block;
     width: 80%;
     max-width: 700px;
     text-align: center;
     color: #ccc;
     padding: 10px 0;
-    font-family: var(--font-serif);
+    height: 150px;
 }
 
 .close-btn {
@@ -741,7 +775,6 @@ body {
     font-weight: bold;
     transition: 0.3s;
     cursor: pointer;
-    z-index: 101;
 }
 
 .close-btn:hover,
@@ -751,7 +784,7 @@ body {
     cursor: pointer;
 }
 
-/* Navigation buttons (Prev/Next) */
+/* Navigation buttons */
 .prev-btn, .next-btn {
     cursor: pointer;
     position: absolute;
@@ -765,8 +798,8 @@ body {
     transition: 0.6s ease;
     border-radius: 0 3px 3px 0;
     user-select: none;
-    background-color: rgba(0,0,0,0.5);
-    z-index: 101;
+    background-color: rgba(0,0,0,0.6);
+    z-index: 1001;
 }
 
 .next-btn {
@@ -779,252 +812,105 @@ body {
 }
 
 
-/* --- 15. Floating WhatsApp Button --- */
+/* --- 15. WhatsApp Float Button --- */
 .whatsapp-float {
     position: fixed;
     width: 60px;
     height: 60px;
     bottom: 40px;
-    right: 40px;
+    right: 20px;
     background-color: #25d366;
     color: #FFF;
     border-radius: 50px;
     text-align: center;
     font-size: 30px;
     box-shadow: 2px 2px 3px #999;
-    z-index: 99;
+    z-index: 100;
     display: flex;
-    justify-content: center;
     align-items: center;
-    transition: background-color 0.3s;
+    justify-content: center;
+    text-decoration: none;
 }
 
-.whatsapp-float:hover {
-    background-color: #128c7e;
+.whatsapp-float i {
+    margin-top: 0;
 }
 
 
-/* --- 16. MOBILE RESPONSIVENESS (Media Queries) --- */
-
-/* For tablets/smaller laptops (992px) */
-@media (max-width: 992px) {
-    .hero-overlay {
-        flex-direction: column;
-        justify-content: flex-start;
-        padding: 50px 5%;
+/* --- Media Query for Mobile (Finalizing small screen styles) --- */
+@media (max-width: 768px) {
+    .section-title {
+        font-size: 2em;
+    }
+    
+    .section-subtitle {
+        font-size: 1em;
+        margin-bottom: 20px;
     }
     
     .top-nav-hero {
-        position: static;
-        margin-bottom: 20px;
-        order: -1; 
+        right: 0;
+        left: 0;
+        top: 0;
+        background-color: rgba(26, 67, 28, 0.8); /* Dark background for visibility */
         width: 100%;
+        padding: 15px 10px;
         text-align: center;
-    }
-    
-    .top-nav-hero ul {
-        justify-content: center;
-        gap: 15px;
-    }
-    
-    .logo-container {
-        height: 150px; 
-        background-position: center 50%;
-        background-size: 50%;
-        margin-bottom: 20px;
-    }
-    
-    .gb-meaning-text {
-        font-size: 1.8em;
-        margin-top: 130px; 
     }
 
-    .hero-text {
-        text-align: center;
-        padding-left: 0;
-        max-width: 100%;
+    .top-nav-hero ul {
+        justify-content: space-around;
+        gap: 10px;
+    }
+
+    .top-nav-hero a {
+        font-size: 0.85em;
+    }
+    
+    .hero-section {
+        height: 80vh; 
     }
 
     .hero-text h1 {
-        font-size: 3em; 
+        font-size: 2.5em;
     }
 
-    .hero-text p {
-        font-size: 1.3em;
-    }
-
-    .hero-cta-group {
-        justify-content: center;
-        flex-wrap: wrap;
-    }
-    
-    /* Services & Cards */
-    .service-cards {
-        gap: 20px;
-    }
-    .card {
-        flex: 0 0 calc(50% - 10px); 
-    }
-    
-    /* Value Propositions */
-    .value-propositions {
-        grid-template-columns: repeat(2, 1fr);
-    }
-    
-    /* Process Flow */
-    .process-flow {
-        flex-wrap: wrap;
-    }
-    .process-step {
-        flex: 0 0 calc(50% - 20px);
-        max-width: unset;
-        margin-bottom: 40px;
-    }
-    .process-flow .process-step:not(:last-child)::after {
-        display: none; 
-    }
-    .process-flow .process-step:nth-child(even)::after {
-        content: '';
-        position: absolute;
-        bottom: -20px; 
-        left: 50%; 
-        width: 2px;
-        height: 40px;
-        background-color: var(--color-gold-button);
-        transform: translateX(-50%);
-    }
-
-    /* Lead Form */
-    .lead-form-container {
-        flex-direction: column;
-        gap: 20px;
-        padding: 20px;
-    }
-    .pdf-icon-area {
-        margin-bottom: 10px;
-    }
-}
-
-/* For mobile phones (768px) */
-@media (max-width: 768px) {
-    
-    .section-title {
-        font-size: 2em;
+    .hero-cta-group .cta-button {
+        padding: 12px 20px;
+        font-size: 0.9em;
     }
     
     .content-section {
         padding: 50px 15px;
     }
     
-    /* Hero Section */
-    .hero-section {
-        height: 80vh; 
-    }
-    .top-nav-hero a {
-        font-size: 1em;
-    }
-    .hero-text h1 {
-        font-size: 2.8em;
-    }
-    .hero-text p {
-        font-size: 1.1em;
-    }
-    .hero-cta-group {
-        flex-direction: column; 
-        gap: 15px;
-    }
-    .cta-button {
-        padding: 12px 25px;
+    /* Gallery Filter Adjustment */
+    .filter-buttons {
+        gap: 10px;
+        margin-bottom: 30px;
     }
     
-    /* Services & Cards */
-    .card {
-        flex: 0 0 100%; 
-    }
-    .maintenance-cards .premium-card {
-        transform: scale(1); 
-    }
-    
-    /* Filter Buttons */
     .filter-btn {
-        font-size: 0.9em;
-        padding: 8px 15px;
+        margin: 0; /* Remove extra margin */
     }
 
-    /* Gallery */
-    .gallery-item {
-        flex: 0 0 100%;
-        max-width: 90%; 
-    }
-    .gallery-item img {
-        height: 300px; 
-    }
-    
-    /* Value Propositions */
-    .value-propositions {
-        grid-template-columns: 1fr; 
-    }
-    
-    /* Process Flow */
-     .process-step {
-        flex: 0 0 100%;
-    }
-    .process-flow .process-step:nth-child(even)::after {
-        display: none; 
-    }
-    
-    /* Testimonials (For mobile, stack them vertically) */
-    .testimonials-container {
-        flex-direction: column; 
-        gap: 20px;
-    }
-    .testimonial-card {
-        max-width: 100%; 
-    }
-
-    /* Lead Form */
-    .lead-form-container {
-        padding: 20px 10px;
-    }
-    .pdf-icon-area {
-        margin-bottom: 10px;
-    }
-
-    /* Footer */
-    .contact-bar {
-        padding: 30px 15px;
-    }
-    .contact-section p {
-        margin-bottom: 10px;
-        font-size: 1em;
-    }
-    .social-links a {
-        font-size: 1.5em;
-    }
-
-    /* Modal (Lightbox) */
-    .modal-content-container {
-        padding: 10px;
-        width: 95%;
-    }
-    .modal-image {
-        max-height: 70vh;
-    }
+    /* Modal Adjustments for better mobile viewing */
     .prev-btn, .next-btn {
-        font-size: 20px;
-        padding: 8px;
+        font-size: 16px;
+        padding: 10px;
         margin-top: -30px;
     }
+
     .close-btn {
         font-size: 30px;
+        right: 20px;
     }
     
-    /* Floating WhatsApp Button */
     .whatsapp-float {
         width: 50px;
         height: 50px;
         bottom: 20px;
-        right: 20px;
+        right: 15px;
         font-size: 25px;
     }
 }
